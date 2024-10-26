@@ -2,9 +2,9 @@
 
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import compression from "vite-plugin-compression2";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import { VitePWA } from "vite-plugin-pwa";
-import compression from "vite-plugin-compression2";
 
 import dns from "dns";
 import path from "path";
@@ -103,6 +103,7 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    port: 3003,
   },
   define: {
     "process.env": process.env,
