@@ -66,7 +66,7 @@ const useProductSubmit = (id) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log('data is data',data)
+    console.log('data is data',data)
     try {
       setIsSubmitting(true);
       if (!imageUrl) return notifyError("Image is required!");
@@ -126,7 +126,7 @@ const useProductSubmit = (id) => {
         variants: isCombination ? updatedVariants : [],
       };
       console.log("productData", updatedVariants);
- 
+
       if (updatedId) {
         const res = await ProductServices.updateProduct(updatedId, productData);
         if (res) {
@@ -303,6 +303,7 @@ const useProductSubmit = (id) => {
             setTag(JSON.parse(res.tag));
             setImageUrl(res.image);
             setVariants(res.variants);
+          
             setIsCombination(res.isCombination);
             setQuantity(res?.stock);
             setTotalStock(res.stock);
@@ -380,7 +381,7 @@ const useProductSubmit = (id) => {
       }) => JSON.stringify({ ...rest }) !== "{}"
     );
 
-    // console.log("result", result);
+    console.log("result");
 
     setVariants(result);
 

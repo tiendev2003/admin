@@ -34,15 +34,11 @@ const useUtilsFunction = () => {
   //for formatting number
 
   const getNumber = (value = 0) => {
-    return Number(parseFloat(value || 0).toFixed(2));
+    return  value;
   };
 
   const getNumberTwo = (value = 0) => {
-     return new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-      minimumFractionDigits: 0,
-    }).format(value);
+    return value;
   };
 
   //for translation

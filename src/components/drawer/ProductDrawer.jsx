@@ -87,7 +87,7 @@ const ProductDrawer = ({ id }) => {
   } = useProductSubmit(id);
 
   const { currency } = useUtilsFunction();
-console.log('variants',variants)
+  console.log("variants", variants);
   return (
     <>
       <Modal
@@ -274,7 +274,7 @@ console.log('variants',variants)
                   <InputValue
                     disabled={isCombination}
                     register={register}
-                    maxValue={2000}
+                    maxValue={100000000}
                     minValue={1}
                     label="Original Price"
                     name="originalPrice"
@@ -283,7 +283,6 @@ console.log('variants',variants)
                     defaultValue={0.0}
                     required="false"
                     product
-                    currency={currency}
                   />
                   <Error errorName={errors.originalPrice} />
                 </div>
@@ -303,7 +302,6 @@ console.log('variants',variants)
                     name="price"
                     type="number"
                     placeholder="Sale price"
-                    currency={currency}
                   />
                   <Error errorName={errors.price} />
                 </div>

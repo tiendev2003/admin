@@ -1,5 +1,4 @@
-import React from "react";
-import { TableCell, TableBody, TableRow } from "@windmill/react-ui";
+import { TableBody, TableCell, TableRow } from "@windmill/react-ui";
 
 const Invoice = ({ data, currency, getNumberTwo }) => {
   return (
@@ -13,7 +12,7 @@ const Invoice = ({ data, currency, getNumberTwo }) => {
             <TableCell className="px-6 py-1 whitespace-nowrap font-normal text-gray-500">
               <span
                 className={`text-gray-700 font-semibold  dark:text-gray-300 text-xs ${
-                  item.title.length > 15 ? "wrap-long-title" : "" // Apply class conditionally
+                  item.length > 15 ? "wrap-long-title" : "" // Apply class conditionally
                 }`}
               >
                 {item.title}

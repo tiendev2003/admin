@@ -1,33 +1,30 @@
-import dayjs from "dayjs";
-import { useParams } from "react-router";
-import ReactToPrint from "react-to-print";
-import React, { useContext, useRef } from "react";
-import { FiPrinter } from "react-icons/fi";
-import { IoCloudDownloadOutline } from "react-icons/io5";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import {
-  TableCell,
-  TableHeader,
   Table,
+  TableCell,
   TableContainer,
+  TableHeader,
   WindmillContext,
 } from "@windmill/react-ui";
-import { useTranslation } from "react-i18next";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { useContext, useRef } from "react";
+import { FiPrinter } from "react-icons/fi";
+import { IoCloudDownloadOutline } from "react-icons/io5";
+import { useParams } from "react-router";
+import ReactToPrint from "react-to-print";
 
 //internal import
-import useAsync from "@/hooks/useAsync";
-import Status from "@/components/table/Status";
-import OrderServices from "@/services/OrderServices";
-import Invoice from "@/components/invoice/Invoice";
-import Loading from "@/components/preloader/Loading";
-import logoDark from "@/assets/img/logo/logo-dark.svg";
 import logoLight from "@/assets/img/logo/logo-color.svg";
-import PageTitle from "@/components/Typography/PageTitle";
-import useUtilsFunction from "@/hooks/useUtilsFunction";
+import logoDark from "@/assets/img/logo/logo-dark.svg";
+import Invoice from "@/components/invoice/Invoice";
 import InvoiceForDownload from "@/components/invoice/InvoiceForDownload";
+import Loading from "@/components/preloader/Loading";
+import Status from "@/components/table/Status";
+import PageTitle from "@/components/Typography/PageTitle";
+import useAsync from "@/hooks/useAsync";
+import useUtilsFunction from "@/hooks/useUtilsFunction";
+import OrderServices from "@/services/OrderServices";
 
 const OrderInvoice = () => {
-  const { t } = useTranslation();
   const { mode } = useContext(WindmillContext);
   const { id } = useParams();
   const printRef = useRef();
@@ -46,7 +43,7 @@ const OrderInvoice = () => {
 
   return (
     <>
-      <PageTitle> {t("InvoicePageTittle")} </PageTitle>
+      <PageTitle> {"InvoicePageTittle"} </PageTitle>
 
       <div
         ref={printRef}
@@ -56,9 +53,9 @@ const OrderInvoice = () => {
           <div className="">
             <div className="flex lg:flex-row md:flex-row flex-col lg:items-center justify-between pb-4 border-b border-gray-50 dark:border-gray-700 dark:text-gray-300">
               <h1 className="font-bold font-serif text-xl uppercase">
-                {t("InvoicePageTittle")}
+                {"InvoicePageTittle"}
                 <p className="text-xs mt-1 text-gray-500">
-                  {t("InvoiceStatus")}
+                  {"InvoiceStatus"}
                   <span className="pl-2 font-medium text-xs capitalize">
                     {" "}
                     <Status status={data.status} />
@@ -84,7 +81,7 @@ const OrderInvoice = () => {
             <div className="flex lg:flex-row md:flex-row flex-col justify-between pt-4">
               <div className="mb-3 md:mb-0 lg:mb-0 flex flex-col">
                 <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoiceDate")}
+                  {"InvoiceDate"}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 block">
                   {showDateFormat(data?.createdAt)}
@@ -92,7 +89,7 @@ const OrderInvoice = () => {
               </div>
               <div className="mb-3 md:mb-0 lg:mb-0 flex flex-col">
                 <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoiceNo")}
+                  {"InvoiceNo"}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 block">
                   #{data?.invoice}
@@ -100,7 +97,7 @@ const OrderInvoice = () => {
               </div>
               <div className="flex flex-col lg:text-right text-left">
                 <span className="font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoiceTo")}
+                  {"InvoiceTo"}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 block">
                   {data?.user_info?.name} <br />
@@ -126,15 +123,15 @@ const OrderInvoice = () => {
               <Table>
                 <TableHeader>
                   <tr>
-                    <TableCell>{t("Sr")}</TableCell>
+                    <TableCell>{"Sr"}</TableCell>
                     <TableCell>Product Title</TableCell>
                     <TableCell className="text-center">
-                      {t("Quantity")}
+                      {"Quantity"}
                     </TableCell>
                     <TableCell className="text-center">
-                      {t("ItemPrice")}
+                      {"ItemPrice"}
                     </TableCell>
-                    <TableCell className="text-right">{t("Amount")}</TableCell>
+                    <TableCell className="text-right">{"Amount"}</TableCell>
                   </tr>
                 </TableHeader>
                 <Invoice
@@ -152,7 +149,7 @@ const OrderInvoice = () => {
             <div className="flex lg:flex-row md:flex-row flex-col justify-between">
               <div className="mb-3 md:mb-0 lg:mb-0  flex flex-col sm:flex-wrap">
                 <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoicepaymentMethod")}
+                  {"InvoicepaymentMethod"}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-semibold font-serif block">
                   {data.paymentMethod}
@@ -160,7 +157,7 @@ const OrderInvoice = () => {
               </div>
               <div className="mb-3 md:mb-0 lg:mb-0  flex flex-col sm:flex-wrap">
                 <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("ShippingCost")}
+                  {"ShippingCost"}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-semibold font-serif block">
                   {currency}
@@ -169,7 +166,7 @@ const OrderInvoice = () => {
               </div>
               <div className="mb-3 md:mb-0 lg:mb-0  flex flex-col sm:flex-wrap">
                 <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoiceDicount")}
+                  {"InvoiceDicount"}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-semibold font-serif block">
                   {currency}
@@ -178,7 +175,7 @@ const OrderInvoice = () => {
               </div>
               <div className="flex flex-col sm:flex-wrap">
                 <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 dark:text-gray-500 block">
-                  {t("InvoiceTotalAmount")}
+                  {"InvoiceTotalAmount"}
                 </span>
                 <span className="text-xl font-serif font-bold text-red-500 dark:text-emerald-500 block">
                   {currency}
@@ -194,7 +191,7 @@ const OrderInvoice = () => {
           <PDFDownloadLink
             document={
               <InvoiceForDownload
-                t={t}
+            
                 data={data}
                 currency={currency}
                 getNumberTwo={getNumberTwo}
@@ -220,7 +217,7 @@ const OrderInvoice = () => {
           <ReactToPrint
             trigger={() => (
               <button className="flex items-center text-sm leading-5 transition-colors duration-150 font-medium focus:outline-none px-5 py-2 rounded-md text-white bg-emerald-500 border border-transparent active:bg-emerald-600 hover:bg-emerald-600  w-auto">
-                {t("PrintInvoice")}
+                {"PrintInvoice"}
                 <span className="ml-2">
                   <FiPrinter />
                 </span>

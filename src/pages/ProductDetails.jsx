@@ -48,7 +48,7 @@ const ProductDetails = () => {
         // res.includes(att.title.replace(/[^a-zA-Z0-9]/g, ''))
         res.includes(att._id)
       );
-
+      console.log("varTitle", varTitle);
       setVariantTitle(varTitle);
     }
   }, [attribue, data?.variants, loading, lang]);
